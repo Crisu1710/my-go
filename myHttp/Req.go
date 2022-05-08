@@ -19,7 +19,9 @@ func HttpRequest(method string, url string, jsonData []byte, auth string) (*http
 		fmt.Println(err)
 	}
 
-	request.Header.Set("Authorization", "Basic "+auth)
+	if auth != "" {
+		request.Header.Set("Authorization", "Basic "+auth)
+	}
 	request.Header.Set("Content-Type", "application/json")
 
 	res, err := client.Do(request)
