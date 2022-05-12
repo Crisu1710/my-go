@@ -2,14 +2,13 @@ package myHttp
 
 import (
 	"bytes"
-	"crypto/tls"
 	"fmt"
 	"net/http"
 	"time"
 )
 
 func HttpRequest(method string, url string, jsonData []byte, auth string) (*http.Response, error) {
-	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+	//http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	client := http.Client{
 		Timeout: time.Second * 5, // Timeout after 5 seconds
 	}
