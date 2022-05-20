@@ -1,4 +1,4 @@
-package myHttp
+package myBrowser
 
 import (
 	"os/exec"
