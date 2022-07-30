@@ -2,6 +2,7 @@ package myAuth
 
 import (
 	"context"
+	b64 "encoding/base64"
 	"encoding/json"
 	"fmt"
 	"github.com/coreos/go-oidc"
@@ -89,4 +90,10 @@ func DoKcAuth(configURL string, clientID string, clientSecret string, redirectUR
 		}
 		w.Write([]byte(resp.OAuth2Token.AccessToken))
 	})
+}
+
+func ParseJWT(p string) ([]byte, error) {
+	parts := strings.Split(p, ".")
+	payload, _ := b64.RawURLEncoding.DecodeString(parts[1])
+	return payload, nil
 }
